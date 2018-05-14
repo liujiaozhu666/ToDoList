@@ -1,0 +1,57 @@
+
+<div class="container-fluid">
+  <nav class=" bg-dark">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+        <h3 class="text-white">ToDoList</h3>
+      </div>
+      <div class="col-md-auto">
+        <input class="form-control" type="text" [(ngModel)]="username" (keyup)="addData($event)">
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>正在进行</h3>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+
+      <ul class="list-group">
+        <li  class="list-group-item list-group-item-dark" [(hidden)]="item.status" *ngFor="let item of list;let i = index;">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" [(ngModel)]="item.status" (change)="abc(i,item.status)" class="custom-control-input" id="{{i}}">
+            <label class="custom-control-label" for="{{i}}"></label>
+            <span class="text-danger">{{item.username}}</span>
+            <a (click)="deleteData(i)" class="btn btn-secondary btn-md active float-right" role="button" aria-pressed="true">
+              删除
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+      <h3>已完成</h3>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success" [(hidden)]="!item.status" *ngFor="let item of list;let i = index;">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" [(ngModel)]="item.status" (change)="abc(i,item.status)" class="custom-control-input" id="{{ i }}" >
+            <label class="custom-control-label" for="{{i}}"></label>
+            <span class="text-primary">{{item.username}}</span>
+            <a (click)="deleteData(i)" class="btn btn-success btn-md active float-right" role="button" aria-pressed="true">
+              删除
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
