@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {  StorageService } from '../../services/storage.service';
-import {letProto} from 'rxjs/operator/let';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
